@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Black, Yellow, White color palette */
+  --background: oklch(1 0 0); /* White */
+  --foreground: oklch(0.15 0 0); /* Black */
+  --card: oklch(0.98 0 0); /* Off-white */
+  --card-foreground: oklch(0.15 0 0); /* Black */
+  --primary: oklch(0.15 0 0); /* Black */
+  --primary-foreground: oklch(1 0 0); /* White */
+  --secondary: oklch(0.85 0.18 95); /* Yellow */
+  --secondary-foreground: oklch(0.15 0 0); /* Black */
+  --accent: oklch(0.85 0.18 95); /* Yellow */
+  --accent-foreground: oklch(0.15 0 0); /* Black */
+  --muted: oklch(0.96 0 0); /* Light gray */
+  --muted-foreground: oklch(0.45 0 0); /* Dark gray */
+  --border: oklch(0.9 0 0); /* Light gray */
+  --input: oklch(0.9 0 0); /* Light gray */
+  --ring: oklch(0.85 0.18 95); /* Yellow */
+  --radius: 0.75rem;
+  --yellow: oklch(0.85 0.18 95); /* Bright Yellow */
+  --yellow-dark: oklch(0.7 0.18 95); /* Darker Yellow */
+}
+
+.dark {
+  --background: oklch(0.12 0 0); /* Black */
+  --foreground: oklch(0.98 0 0); /* White */
+  --card: oklch(0.15 0 0); /* Dark gray */
+  --card-foreground: oklch(0.98 0 0); /* White */
+  --primary: oklch(0.85 0.18 95); /* Yellow */
+  --primary-foreground: oklch(0.12 0 0); /* Black */
+  --secondary: oklch(0.85 0.18 95); /* Yellow */
+  --secondary-foreground: oklch(0.12 0 0); /* Black */
+  --accent: oklch(0.85 0.18 95); /* Yellow */
+  --accent-foreground: oklch(0.12 0 0); /* Black */
+  --muted: oklch(0.2 0 0); /* Dark gray */
+  --muted-foreground: oklch(0.65 0 0); /* Light gray */
+  --border: oklch(0.25 0 0); /* Dark gray */
+  --input: oklch(0.25 0 0); /* Dark gray */
+  --ring: oklch(0.85 0.18 95); /* Yellow */
+}
+
+@theme inline {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-yellow: var(--yellow);
+  --color-yellow-dark: var(--yellow-dark);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Custom animations for modern feel */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-yellow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(234, 179, 8, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out;
+}
+
+.animate-pulse-yellow {
+  animation: pulse-yellow 2s infinite;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-black-yellow {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+}
+
+.bg-gradient-yellow-black {
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 50%, #000000 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eab308;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ca8a04;
+}
